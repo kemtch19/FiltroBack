@@ -23,12 +23,28 @@ namespace FiltroBack.Controllers.Owners
             try
             {
                 var propietarios = _ownerRepository.GetAll(page);
-                return Ok(new { información = $"Estos son propietarios actualmente: ", propietarios });
+                return Ok(new { informacion = $"Estos son propietarios actualmente: ", propietarios });
             }
             catch (Exception e)
             {
                 return BadRequest($"Error al intentar encontrar a todos los cursos: {e.Message}");
             }
         }
+
+        /* [HttpGet]
+        public IActionResult GetOwners()
+        {
+            try
+            {
+                var propietarios = _ownerRepository.GetAll();
+                return Ok(new { informacion = $"Estos son los propietarios actualmente: {propietarios.Count()}", propietarios });
+            }
+            catch (Exception e)
+            {
+                return BadRequest($"Error al intentar encontrar a todos los cursos: {e.Message}");
+            }
+        }  */
+
+        
     }
 }

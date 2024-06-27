@@ -1,4 +1,6 @@
 using FiltroBack.Data;
+using FiltroBack.Services.Interfaces;
+using FiltroBack.Services.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +19,9 @@ builder.Services.AddCors(Options=>{
 builder.Services.AddDbContext<FiltroBackContext>(Options =>
     Options.UseMySql(builder.Configuration.GetConnectionString("FiltroBackDB"),
     Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.20-mysql")));
+
+// Creación de los scopes de cada repositorio
+builder.Services.AddScoped<IOwnerRepository, OwnerRepository>();
 
 var app = builder.Build();
 

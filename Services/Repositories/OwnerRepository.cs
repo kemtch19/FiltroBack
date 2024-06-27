@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FiltroBack.Data;
+using FiltroBack.Models;
 using FiltroBack.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,5 +39,10 @@ namespace FiltroBack.Services.Repositories
 
             return data;
         }
+
+        /* public IEnumerable<Owner> GetAll()
+        {
+            return _context.Owners.ToList();
+        } */
     }
 }
