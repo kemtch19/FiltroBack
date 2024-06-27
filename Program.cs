@@ -22,6 +22,7 @@ builder.Services.AddDbContext<FiltroBackContext>(Options =>
 
 // Creación de los scopes de cada repositorio
 builder.Services.AddScoped<IOwnerRepository, OwnerRepository>();
+builder.Services.AddScoped<IPetRepository, PetRepository>();
 
 var app = builder.Build();
 
