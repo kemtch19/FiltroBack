@@ -1,3 +1,4 @@
+using FiltroBack.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,7 +14,7 @@ builder.Services.AddCors(Options=>{
 });
 
 // servicio de la base de datos
-builder.Services.AddDbContext<PracticaFiltroContext>(Options =>
+builder.Services.AddDbContext<FiltroBackContext>(Options =>
     Options.UseMySql(builder.Configuration.GetConnectionString("FiltroBackDB"),
     Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.20-mysql")));
 

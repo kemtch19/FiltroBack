@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FiltroBack")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6e4d8bd12daae8e67a429d8b0bb5dad0c3c78a3d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1c4e89dfe52102ed272f820c47513917c149edc5")]
 [assembly: System.Reflection.AssemblyProductAttribute("FiltroBack")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FiltroBack")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
