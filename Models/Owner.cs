@@ -14,7 +14,7 @@ namespace FiltroBack.Models
         [Key]
         [Column("id_owners")]
         [Required]
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
         [Column("Names")]
         [Required(ErrorMessage ="Possible null value for Name of owner")]
@@ -23,6 +23,10 @@ namespace FiltroBack.Models
         [Column("LastNames")]
         [Required(ErrorMessage ="Possible null value for Lastname of owner")]
         public string? Lastnames { get; set; }
+
+        [Column("Email")]
+        [Required(ErrorMessage ="Possible null value for Email of owner")]
+        public string? Email { get; set; }
 
         [Column("Address")]
         [Required(ErrorMessage ="Possible null value for Address of owner")]

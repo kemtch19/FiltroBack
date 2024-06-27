@@ -23,7 +23,7 @@ namespace FiltroBack.Controllers.Owners
             try
             {
                 var propietarios = _ownerRepository.GetAll(page);
-                return Ok(new { informacion = $"Estos son propietarios actualmente: ", propietarios });
+                return Ok(new { informacion = $"Estos son los propietarios actualmente: ", propietarios });
             }
             catch (Exception e)
             {
@@ -45,6 +45,22 @@ namespace FiltroBack.Controllers.Owners
             }
         }  */
 
-        
+        [HttpGet("{Id}")]
+        public ActionResult GetOwner(int id)
+        {
+            try
+            {
+                var propietario = _ownerRepository.GetOne(id);
+                if (propietario == null)
+                {
+                    return NotFound($"No se encontró el propietario con el id: {id}");
+                }
+                return Ok(new { informacion = $"El propietario con id {propietario.Id} y con nombre {propietario.Names} fue encontrado y estos son sus datos: ", propietario });
+            }
+            catch (Exception e)
+            {
+                return BadRequest($"Error al obtener el propietario de la base de datos, posiblemente no exista el propietario con id: {id} y el mensaje es: {e.Message}");
+            }
+        }
     }
 }

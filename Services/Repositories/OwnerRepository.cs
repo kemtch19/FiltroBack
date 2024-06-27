@@ -21,7 +21,7 @@ namespace FiltroBack.Services.Repositories
         /* Lógica de la páginación donde pasamos el número de páginas, contamos cuantas se pueden, eskipeamos las que sean necesarias y creamos el data con la información de las páginas */
         public object GetAll([FromQuery] int? page)
         {
-            int _page = page ?? 1; 
+            int _page = page ?? 1;
             decimal totalRecords = _context.Owners.Count();
             int totalPages = Convert.ToInt32(Math.Ceiling(totalRecords / records));
 
@@ -44,5 +44,22 @@ namespace FiltroBack.Services.Repositories
         {
             return _context.Owners.ToList();
         } */
+
+        public Owner GetOne(int id)
+        {
+            return _context.Owners.FirstOrDefault(o => o.Id == id);
+        }
+
+        public void Create(Owner owner)
+        {
+            _context.Owners.Add(owner);
+            _context.SaveChanges();
+        }
+
+        public void Update(Owner owner)
+        {
+            _context.Owners.Update(owner);
+            _context.SaveChanges();
+        }
     }
 }

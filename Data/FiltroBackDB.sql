@@ -13,7 +13,6 @@ CREATE TABLE Owners(
 INSERT INTO Owners(`Names`, `LastNames`, `Email`, `Address`, `Phone`) VALUES
 ("Daniel", "Alzate", "test@gmail.com", "avenida siempre viva 36", "341421333");
 
-
 -- veterinarios
 CREATE TABLE Vets (
     id_Vets INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
@@ -57,4 +56,8 @@ CREATE TABLE Pets(
 INSERT INTO Pets(`Name`, `Specie`, `Race`, `DateBirth`, `Photo`, `OwnerId`) VALUES
 ("Luna", "Perro", "Pincher", "2021-01-02", "fotoLuna.png", 1);
 
-SELECT * FROM Vets;
+SELECT * FROM `Vets`;
+
+DROP Table `Owners`, `Quotes`, `Pets`, `Vets`;
+
+SHOW TABLES;

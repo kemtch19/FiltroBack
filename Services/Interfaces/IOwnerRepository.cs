@@ -11,5 +11,8 @@ namespace FiltroBack.Services.Interfaces
     {
         public object GetAll([FromQuery] int? page);
         // public IEnumerable<Owner> GetAll();
+        public Owner GetOne(int id);
+        public void Create(Owner owner);
+        public void Update(Owner owner);
     }
 }
