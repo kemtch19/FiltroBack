@@ -58,7 +58,7 @@ namespace FiltroBack.Controllers.Mail
                         Console.WriteLine($"Se ha enviado correctamente el correo a {emailOwner} con el asunto:\n{EmailMessage.text}");
                     } else
                     {
-                        Console.WriteLine($"La solicitud falló: {response.StatusCode}");mascota
+                        Console.WriteLine($"La solicitud falló: {response.StatusCode}");
                     }
                 }
             }

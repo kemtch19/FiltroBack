@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FiltroBack.Models;
 using FiltroBack.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -46,6 +47,21 @@ namespace FiltroBack.Controllers.Vets
             catch (Exception e)
             {
                 return BadRequest($"Error al obtener el veterinario de la base de datos, posiblemente no exista el veterinario con id: {id} y el mensaje es: {e.Message}");
+            }
+        }
+
+        // Listado de Citas que tiene un veterinario en especifico
+        [HttpGet, Route("{Id}/Vets")]
+        public ActionResult<IEnumerable<Quote>> GetQuotesByVet(int id){
+            var citas = _vetRepository.GetQuotesByVet(id);
+            if (citas == null)
+            {
+                return NotFound($"citas por este id {id} no encontradas");
+            }
+            try{
+                return Ok(citas);
+            }catch(Exception e){
+                return BadRequest($"Error al intentar obtener las citas de la base de datos, posiblemente no existan citas para el veterinario con id: {id} y el mensaje es: {e.Message}");
             }
         }
     }

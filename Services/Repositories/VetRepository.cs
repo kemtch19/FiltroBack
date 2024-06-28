@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FiltroBack.Data;
 using FiltroBack.Models;
 using FiltroBack.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace FiltroBack.Services.Repositories
 {
@@ -23,6 +24,12 @@ namespace FiltroBack.Services.Repositories
         public Vet GetOne(int id)
         {
             return _context.Vets.FirstOrDefault(v => v.Id == id);
+        }
+
+        // Listado de citas que tiene un veterinario en especifico
+        public IEnumerable<Quote> GetQuotesByVet(int vetId)
+        {
+            return _context.Quotes.Include(p => p.Pet).Include(v => v.Vet).Where(q=>q.VetId==vetId);
         }
     }
 }

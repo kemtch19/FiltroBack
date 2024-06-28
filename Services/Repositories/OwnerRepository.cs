@@ -61,5 +61,16 @@ namespace FiltroBack.Services.Repositories
             _context.Owners.Update(owner);
             _context.SaveChanges();
         }
+        // Lista de mascotas que tiene una persona
+        public IEnumerable<Pet> GetPetsByOwner(int ownerId)
+        {
+            return _context.Pets.Where(p => p.OwnerId == ownerId).ToList();
+        }
+
+        /* //lista de dueños y mascotas para enviarles promociones y felicitaciones
+        public IEnumerable<Pet> OwnerAndPets()
+        {
+            return _c
+        } */
     }
 }

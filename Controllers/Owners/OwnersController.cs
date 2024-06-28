@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FiltroBack.Models;
 using FiltroBack.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -60,6 +61,22 @@ namespace FiltroBack.Controllers.Owners
             catch (Exception e)
             {
                 return BadRequest($"Error al obtener el propietario de la base de datos, posiblemente no exista el propietario con id: {id} y el mensaje es: {e.Message}");
+            }
+        }
+
+        // listar mascotas que tiene una persona
+        [HttpGet, Route("{iD}/Owner")]
+        public ActionResult<IEnumerable<Pet>> GetPetByOneOwner(int id)
+        {
+            var mascota = _ownerRepository.GetPetsByOwner(id);
+            if (mascota == null)
+            {
+                return NotFound($"mascotas por este id {id} no encontradas");
+            }
+            try{
+                return Ok(mascota);
+            }catch(Exception e){
+                return BadRequest($"Error al intentar obtener las mascotas de la base de datos, posiblemente no existan mascotas para el propietario con id: {id} y el mensaje es: {e.Message}");
             }
         }
     }

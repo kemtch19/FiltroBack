@@ -14,5 +14,6 @@ namespace FiltroBack.Services.Interfaces
         public Owner GetOne(int id);
         public void Create(Owner owner);
         public void Update(Owner owner);
+        public IEnumerable<Pet> GetPetsByOwner(int ownerId);
     }
 }

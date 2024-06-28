@@ -10,5 +10,6 @@ namespace FiltroBack.Services.Interfaces
     {
         public IEnumerable<Vet> GetAll();
         public Vet GetOne(int id);
+        public IEnumerable<Quote> GetQuotesByVet(int vetId);
     }
 }

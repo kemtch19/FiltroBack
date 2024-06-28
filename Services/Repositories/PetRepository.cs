@@ -43,7 +43,7 @@ namespace FiltroBack.Services.Repositories
 
         public Pet GetOne(int id)
         {
-            return _context.Pets.Include(o=>o.Owner).FirstOrDefault(p => p.Id == id);
+            return _context.Pets.Include(o => o.Owner).FirstOrDefault(p => p.Id == id);
         }
 
         public void Create(Pet pet)
@@ -56,5 +56,7 @@ namespace FiltroBack.Services.Repositories
             _context.Pets.Update(pet);
             _context.SaveChanges();
         }
+
+        
     }
 }

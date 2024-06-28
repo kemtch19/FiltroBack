@@ -22,7 +22,7 @@ namespace FiltroBack.Controllers.Pets
         {
             if (pet == null)
             {
-                return BadRequest("Se esta creando el perro con datos nulos o erroneos");
+                return BadRequest("Se esta creando el animal con datos nulos o erroneos");
             }
             try
             {

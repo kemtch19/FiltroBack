@@ -11,5 +11,7 @@ namespace FiltroBack.Services.Interfaces
         public IEnumerable<Quote> GetAll();
         public Quote GetOne(int id);
         public void Create(Quote quote);
+        public void Update(Quote quote);
+        public IEnumerable<Quote> dateSpecific(DateTime date);
     }
 }

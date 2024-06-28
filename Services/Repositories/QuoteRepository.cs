@@ -41,7 +41,19 @@ namespace FiltroBack.Services.Repositories
 
             // instanciamos el email
             MailController Email = new MailController();
-            Email.SendEmail(owner.Email ,owner.Names, quote.Date, quote.Description, vet.Name, vet.Phone, vet.Email, pet.Name);
+            Email.SendEmail(owner.Email, owner.Names, quote.Date, quote.Description, vet.Name, vet.Phone, vet.Email, pet.Name);
+        }
+
+        public void Update(Quote quote)
+        {
+            _context.Quotes.Update(quote);
+            _context.SaveChanges();
+        }
+        // Lista de citas para una fecha en especifico
+        public IEnumerable<Quote> dateSpecific(DateTime date)
+        {
+            var date2 = _context.Quotes.Include(p => p.Pet).Include(v => v.Vet).Where(q=>q.Date==date);
+            return date2;
         }
     }
 }

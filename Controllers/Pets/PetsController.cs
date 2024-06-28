@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FiltroBack.Models;
 using FiltroBack.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,8 +37,9 @@ namespace FiltroBack.Controllers.Pets
         {
             try
             {
-                var mascota= _petRepository.GetOne(id);
-                if(mascota==null){
+                var mascota = _petRepository.GetOne(id);
+                if (mascota == null)
+                {
                     return NotFound($"No se encontró la mascota con el id: {id}");
                 }
                 return Ok(new { informacion = $"La mascota con id {mascota.Id} y con nombre {mascota.Name} fue encontrada y estos son sus datos: ", mascota });
