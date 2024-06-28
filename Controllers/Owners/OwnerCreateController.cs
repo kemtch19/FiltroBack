@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FiltroBack.Models;
+using FiltroBack.Services;
 using FiltroBack.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,12 +14,14 @@ namespace FiltroBack.Controllers.Owners
     public class OwnerCreateController : ControllerBase
     {
         private readonly IOwnerRepository _ownerRepository;
-        public OwnerCreateController(IOwnerRepository ownerRepository)
+                private readonly SlackNotifier _slackNotifier;
+        public OwnerCreateController(IOwnerRepository ownerRepository, SlackNotifier slackNotifier)
         {
             _ownerRepository = ownerRepository;
+            _slackNotifier = slackNotifier;
         }
         [HttpPost]
-        public IActionResult CreateOwner(Owner owner)
+        public async Task<IActionResult> CreateOwner(Owner owner)
         {
             if (owner == null)
             {
@@ -31,6 +34,7 @@ namespace FiltroBack.Controllers.Owners
             }
             catch (Exception e)
             {
+                await _slackNotifier.NotifyAsync(e.StackTrace);
                 return BadRequest($"Error al intentar crear el propietario: {e.Message}");
             }
         }

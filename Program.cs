@@ -1,4 +1,5 @@
 using FiltroBack.Data;
+using FiltroBack.Services;
 using FiltroBack.Services.Interfaces;
 using FiltroBack.Services.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,28 @@ builder.Services.AddScoped<IPetRepository, PetRepository>();
 builder.Services.AddScoped<IVetRepository, VetRepository>();
 builder.Services.AddScoped<IQuoteRepository, QuoteRepository>();
 
+// Builder para JWT con el token
+builder.Services.AddAuthentication(opt =>
+{
+    opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(configure =>
+{
+    configure.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = @Environment.GetEnvironmentVariable("jwtVar"),
+        ValidAudience = @Environment.GetEnvironmentVariable("jwtVar"),
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("3C7A6C4E2754B9A31F225E201C02D82E"))
+    };
+});
+
+// Servicio del Slack API
+builder.Services.AddHttpClient();
+builder.Services.AddSingleton(sp => new SlackNotifier(sp.GetRequiredService<IHttpClientFactory>().CreateClient(), builder.Configuration["Slack:WebHookURL"]));
 
 var app = builder.Build();
 
