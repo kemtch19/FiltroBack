@@ -11,7 +11,7 @@ CREATE TABLE Owners(
 );
 
 INSERT INTO Owners(`Names`, `LastNames`, `Email`, `Address`, `Phone`) VALUES
-("Daniel", "Alzate", "test@gmail.com", "avenida siempre viva 36", "341421333");
+("Maicol", "Agudelo", "kemtch19@gmail.com", "avenida siempre viva 36", "341421333");
 
 -- veterinarios
 CREATE TABLE Vets (

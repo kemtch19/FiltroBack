@@ -10,5 +10,6 @@ namespace FiltroBack.Services.Interfaces
     {
         public IEnumerable<Quote> GetAll();
         public Quote GetOne(int id);
+        public void Create(Quote quote);
     }
 }
